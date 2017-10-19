@@ -31,11 +31,11 @@ function ShoppingListCheckOffService() {
 
   // List of items to buy
   var toBuyItems = [
-    { name: "cookies", quantity: 2 },
-    { name: "chips", quantity: 4 },
-    { name: "candies", quantity: 10 },
-    { name: "soda", quantity: 1 },
-    { name: "apples", quantity: 5 }
+    { name: "cookies", quantity: 2, pricePerItem: 2 },
+    { name: "chips", quantity: 4, pricePerItem: 5 },
+    { name: "candies", quantity: 10, pricePerItem: 1 },
+    { name: "soda", quantity: 1, pricePerItem: 4 },
+    { name: "apples", quantity: 5, pricePerItem: 3 }
   ];
 
   // List of bought items
