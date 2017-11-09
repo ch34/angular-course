@@ -25,18 +25,7 @@ function FoundItemsDirective() {
 
 
 function FoundItemsDirectiveController() {
-  // var list = this;
-  //
-  // list.cookiesInList = function () {
-  //   for (var i = 0; i < list.items.length; i++) {
-  //     var name = list.items[i].name;
-  //     if (name.toLowerCase().indexOf("cookie") !== -1) {
-  //       return true;
-  //     }
-  //   }
-  //
-  //   return false;
-  // };
+
 }
 
 
@@ -62,27 +51,6 @@ function NarrowItDownController(MenuSearchService) {
   list.removeItem = function (itemIndex) {
     MenuSearchService.removeItem(itemIndex);
   };
-  //
-  // var promise = MenuSearchService.getMenuCategories();
-  //
-  // promise.then(function (response) {
-  //   menu.categories = response.data;
-  // })
-  // .catch(function (error) {
-  //   console.log("Something went terribly wrong.");
-  // });
-  //
-  // menu.logMenuItems = function (shortName) {
-  //   var promise = MenuSearchService.getMenuForCategory(shortName);
-  //
-  //   promise.then(function (response) {
-  //     console.log(response.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   })
-  // };
-
 }
 
 
@@ -116,29 +84,6 @@ function MenuSearchService($http, ApiBasePath) {
   service.removeItem = function (itemIndex) {
     found.splice(itemIndex, 1);
   };
-
-
-  // service.getMenuCategories = function () {
-  //   var response = $http({
-  //     method: "GET",
-  //     url: (ApiBasePath + "/categories.json")
-  //   });
-  //
-  //   return response;
-  // };
-  //
-  //
-  // service.getMenuForCategory = function (shortName) {
-  //   var response = $http({
-  //     method: "GET",
-  //     url: (ApiBasePath + "/menu_items.json"),
-  //     params: {
-  //       category: shortName
-  //     }
-  //   });
-  //
-  //   return response;
-  // };
 
 }
 
