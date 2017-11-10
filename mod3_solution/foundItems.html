@@ -1,8 +1,18 @@
-<ol>
-  <li ng-repeat="item in list.items">
-    {{ item.name }}
-    <!-- , {{ item.short_name }}, {{ item.description }} -->
-    <!-- <button ng-click="list.badRemove($index);">Bad Remove Item</button> -->
-    <button ng-click="list.onRemove({index: $index});">Don't want this one!</button>
-  </li>
-</ol>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Short Name</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in list.items">
+      <th><button class="btn btn-danger" ng-click="list.onRemove({index: $index});">Don't want this one!</button></th>
+      <td>{{ item.name }}</td>
+      <td>{{ item.short_name }}</td>
+      <td>{{ item.description }}</td>
+    </tr>
+  </tbody>
+</table>

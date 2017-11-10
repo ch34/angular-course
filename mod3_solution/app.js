@@ -50,6 +50,7 @@ function NarrowItDownController(MenuSearchService) {
 
 
   list.narrowItDown = function () {
+    list.items = [];
     var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
     promise.then(function (response) {
       list.items = response;
