@@ -64,9 +64,9 @@ function NarrowItDownController(MenuSearchService) {
 MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath) {
   var service = this;
-
+  var found;
   service.getMatchedMenuItems = function(searchTerm) {
-    var found = [];
+    found = [];
 
     return $http({
       method: "GET",
@@ -83,7 +83,7 @@ function MenuSearchService($http, ApiBasePath) {
           found.push(menuItems[item]);
         }
       }
-      
+
       // return processed items
       return found;
     });
