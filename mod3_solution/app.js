@@ -12,10 +12,10 @@ function FoundItemsDirective() {
   var ddo = {
     templateUrl: 'foundItems.html',
     scope: {
-      foundItems: '<',
+      items: '<',
       onRemove: '&'
     },
-    controller: NarrowItDownController,
+    controller: FoundItemsDirectiveController,
     controllerAs: 'list',
     bindToController: true
   };
@@ -25,7 +25,18 @@ function FoundItemsDirective() {
 
 
 function FoundItemsDirectiveController() {
+  var list = this;
 
+  list.cookiesInList = function () {
+    for (var i = 0; i < list.items.length; i++) {
+      var name = list.items[i].name;
+      if (name.toLowerCase().indexOf("cookie") !== -1) {
+        return true;
+      }
+    }
+
+    return false;
+  };
 }
 
 
@@ -41,7 +52,7 @@ function NarrowItDownController(MenuSearchService) {
   list.narrowItDown = function () {
     var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
     promise.then(function (response) {
-      list.found = response;
+      list.items = response;
     })
     .catch(function (error) {
       console.log("Something went terribly wrong.");
