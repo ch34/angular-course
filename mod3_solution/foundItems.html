@@ -1,3 +1,4 @@
+<div ng-if="list.nothingFound() == false">
 <table class="table table-hover">
   <thead>
     <tr>
@@ -16,3 +17,5 @@
     </tr>
   </tbody>
 </table>
+</div>
+<div ng-if="list.nothingFound()"><br><br><h2>Nothing Found!<h2></div>
