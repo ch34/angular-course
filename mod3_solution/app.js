@@ -65,15 +65,16 @@ MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
-  var found = [];
-
   service.getMatchedMenuItems = function(searchTerm) {
+    var found = [];
+
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
     }).then(function (result) {
 
       var menuItems = result.data.menu_items;
+
       // process result and only keep items that match
       for(var item in menuItems) {
         var description = menuItems[item].description;
@@ -82,7 +83,7 @@ function MenuSearchService($http, ApiBasePath) {
           found.push(menuItems[item]);
         }
       }
-
+      
       // return processed items
       return found;
     });
