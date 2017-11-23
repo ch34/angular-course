@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('data')
-.service('MenuDataService', MenuDataService);
+.service('MenuDataService', MenuDataService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
 
@@ -11,7 +11,7 @@ function MenuDataService($http, ApiBasePath) {
   var service = this;
 
   // List of shopping items
-  var items = [];
+   var categories = [];
 
   service.getAllCategories  = function() {
     return $http({
@@ -19,19 +19,13 @@ function MenuDataService($http, ApiBasePath) {
       url: (ApiBasePath + "/categories.json")
     }).then(function (result) {
 
-      var categories = result.data;
+      var categoriesData = result.data;
 
-      // process result and only keep items that match
-      // for(var item in menuItems) {
-      //   var description = menuItems[item].description;
-      //   var foundTerm = description.includes(searchTerm);
-      //   if(foundTerm) {
-      //     found.push(menuItems[item]);
-      //   }
-      // }
+      categories = categoriesData
 
-      // return processed items
-      return categories;
+      console.log("List of Categories: ");
+      console.log(categoriesData);
+      return categoriesData;
     });
   };
 
@@ -42,41 +36,14 @@ function MenuDataService($http, ApiBasePath) {
     }).then(function (result) {
 
       var categoryItems = result.data;
-      
+      console.log("Short_Name: ");
+      console.log(categoryShortName);
+      console.log("List of Category Items: ");
+      console.log(categoryItems);
       return categoryItems;
     });
   };
 
-  // // Pre-populate a no cookie list
-  // items.push({
-  //   name: "Sugar",
-  //   quantity: "2 bags",
-  //   description: "Sugar used for baking delicious umm... baked goods."
-  // });
-  // items.push({
-  //   name: "flour",
-  //   quantity: "1 bags",
-  //   description: "High quality wheat flour. Mix it with water, sugar, 2 raw eggs."
-  // });
-  // items.push({
-  //   name: "Chocolate Chips",
-  //   quantity: "3 bags",
-  //   description: "Put these in the dough. No reason, really. Gotta store them somewhere!"
-  // });
-
-  // Simulates call to server
-  // Returns a promise, NOT items array directly
-  // service.getItems = function () {
-  //   var deferred = $q.defer();
-  //
-  //   // Wait 2 seconds before returning
-  //   $timeout(function () {
-  //     // deferred.reject(items);
-  //     deferred.resolve(items);
-  //   }, 800);
-  //
-  //   return deferred.promise;
-  // };
 }
 
 })();
