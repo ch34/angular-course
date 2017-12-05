@@ -1,0 +1,65 @@
+<div class="container signup" >
+  <h2 id="menu-categories-title" class="text-center">Sign Up</h2>
+  <fieldset>
+    <legend>Registration</legend>
+    <form name='regForm' novalidate>
+
+      <input type="text" name="firstname" placeholder="First Name"
+        ng-model="reg.user.firstname"
+        required
+        minlength="1">
+        {{ reg.user.firstname }}
+        <span
+          ng-if="(regForm.firstname.$error.minlength || regForm.firstname.$error.required) && regForm.firstname.$touched">
+          First Name must not be empty
+        </span>
+        <br>
+
+      <input type="text" name="lastname" placeholder="Last Name"
+        ng-model="reg.user.lastname"
+        required
+        minlength="1">
+        {{ reg.user.lastname }}
+        <span
+          ng-if="(regForm.lastname.$error.minlength || regForm.lastname.$error.required) && regForm.lastname.$touched">
+          Last Name must not be empty
+        </span>
+        <br>
+
+      <input type="email" name="email" placeholder="Email"
+        ng-model="reg.user.email"
+        required>
+        <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+        <br>
+
+      <input type="text" name="phone" placeholder="Phone ###-###-####"
+        ng-model="reg.user.phone"
+        pattern="(\d{3})-(\d{3})-(\d{4})">
+        <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+        <br>
+
+      <input type="text" name="favoritedish" placeholder="Your Favorite Dish"
+        ng-model="reg.user.favoritedish"
+        required
+        minlength="1">
+        {{ reg.user.favoritedish }}
+        <span
+          ng-if="(regForm.favoritedish.$error.minlength || regForm.favoritedish.$error.required) && regForm.favoritedish.$touched">
+          Last Name must not be empty
+        </span>
+        <br>
+
+      <button
+        ng-disabled="regForm.$invalid"
+        ng-click="reg.submit()">Submit</button>
+
+        <div style="margin-top: 10px;">
+          Form valid? {{ regForm.$valid }}
+        </div>
+    </form>
+  </fieldset>
+</div>
