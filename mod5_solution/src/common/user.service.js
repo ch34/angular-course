@@ -4,12 +4,12 @@
 angular.module('common')
 .service('UserService', UserService);
 
-
-// UserService.$inject = ['$http', 'ApiPath'];
 function UserService() {
   var service = this;
 
   var user;
+
+  var userSignedUp;
 
   service.setUser = function (userInfo) {
     user = userInfo;
@@ -19,6 +19,13 @@ function UserService() {
     return user;
   };
 
+  service.setUserSignedUp = function (userStatus) {
+    userSignedUp = userStatus;
+  };
+
+  service.getUserSignedUp = function () {
+    return userSignedUp;
+  };
 }
 
 

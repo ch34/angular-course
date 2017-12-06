@@ -6,31 +6,29 @@ angular.module('public')
 
 SignUpController.$inject = ['MenuService', 'UserService'];
 function SignUpController(MenuService, UserService) {
-  // var $ctrl = this;
-  // $ctrl.menuCategories = menuCategories;
 
   var reg = this;
-
-  reg.validFavDish = false;
   reg.errorMessage = "";
+  reg.submitMessage = "";
+  reg.isUserSignedUp = UserService.getUserSignedUp();
 
   reg.submit = function () {
-    console.log("IN SUBMIT: ");
+
     reg.completed = true;
     reg.setUser();
+    reg.submitMessage = "Your information has been saved.";
   };
 
   reg.checkFavDish = function () {
     var promise = MenuService.getFavoriteDish(reg.user.favoritedish);
     promise.then(function (response) {
-      console.log("RESPONSE" + response.data);
-      reg.validFavDish = true;
+
       reg.user.favoritedishobj = response;
+      reg.errorMessage = "";
     })
     .catch(function (error) {
       reg.errorMessage = "No such menu number exists";
-      console.log("Something went terribly wrong.");
-      reg.validFavDish = false;
+
     });
   }
 
