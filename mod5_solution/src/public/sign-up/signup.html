@@ -43,11 +43,14 @@
       <input type="text" name="favoritedish" placeholder="Your Favorite Dish"
         ng-model="reg.user.favoritedish"
         required
-        minlength="1">
+        minlength="1" ng-blur="reg.checkFavDish()">
         {{ reg.errorMessage }}
         <span
           ng-if="(regForm.favoritedish.$error.minlength || regForm.favoritedish.$error.required) && regForm.favoritedish.$touched">
           Favorite Dish must not be empty
+          <span ng-show="reg.validFavDish == false">
+            No such menu number exists
+          </span>
         </span>
         <br>
 
