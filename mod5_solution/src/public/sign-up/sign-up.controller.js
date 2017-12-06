@@ -17,7 +17,7 @@ function SignUpController(MenuService, UserService) {
   reg.submit = function () {
     console.log("IN SUBMIT: ");
     reg.completed = true;
-
+    reg.setUser();
   };
 
   reg.checkFavDish = function () {
@@ -25,6 +25,7 @@ function SignUpController(MenuService, UserService) {
     promise.then(function (response) {
       console.log("RESPONSE" + response.data);
       reg.validFavDish = true;
+      reg.user.favoritedishobj = response;
     })
     .catch(function (error) {
       reg.errorMessage = "No such menu number exists";

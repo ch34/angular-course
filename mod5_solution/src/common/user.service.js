@@ -15,6 +15,10 @@ function UserService() {
     user = userInfo;
   };
 
+  service.getUser = function () {
+    return user;
+  };
+
 }
 
 
