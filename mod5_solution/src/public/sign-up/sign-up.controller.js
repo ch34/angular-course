@@ -8,6 +8,7 @@ SignUpController.$inject = ['MenuService', 'UserService'];
 function SignUpController(MenuService, UserService) {
 
   var reg = this;
+  reg.validDishMenu = false;
   reg.errorMessage = "";
   reg.submitMessage = "";
   reg.isUserSignedUp = UserService.getUserSignedUp();
@@ -25,10 +26,11 @@ function SignUpController(MenuService, UserService) {
 
       reg.user.favoritedishobj = response;
       reg.errorMessage = "";
+      reg.validDishMenu = true;
     })
     .catch(function (error) {
       reg.errorMessage = "No such menu number exists";
-
+      reg.validDishMenu = false;
     });
   }
 

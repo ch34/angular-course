@@ -51,9 +51,9 @@
           Favorite Dish must not be empty
         </span>
         <br>
-
+        
       <button
-        ng-disabled="regForm.$invalid"
+        ng-disabled="regForm.$invalid || !reg.validDishMenu"
         ng-click="reg.submit()">Submit</button>
 
         <div style="margin-top: 10px;">
